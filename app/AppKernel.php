@@ -1,7 +1,7 @@
 <?php
 
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\HttpKernel\Kernel;
 
 abstract class AppKernel extends Kernel
 {
@@ -41,16 +41,26 @@ abstract class AppKernel extends Kernel
 
     public function getCacheDir()
     {
-        return dirname(__DIR__).'/var/cache/'.$this->getEnvironment();
+        return dirname(__DIR__) . '/var/cache/' . $this->getAppName() . '/' . $this->getEnvironment();
     }
 
     public function getLogDir()
     {
-        return dirname(__DIR__).'/var/logs';
+        return dirname(__DIR__) . '/var/logs/' . $this->getAppName();
+    }
+
+    protected function getKernelParameters()
+    {
+        $parameters = parent::getKernelParameters();
+
+        return array_merge_recursive($parameters, [
+            'kernel.multiple_root_dir' => $parameters['kernel.root_dir'] . '/config/' . $this->getAppName(),
+            'kernel.app_name' => $this->getAppName(),
+        ]);
     }
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
+        $loader->load($this->getRootDir() . '/config/' . $this->getAppName() . '/' . 'config_' . $this->getEnvironment() . '.yml');
     }
 }

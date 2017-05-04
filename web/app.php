@@ -6,8 +6,8 @@ use Symfony\Component\HttpFoundation\Request;
 $loader = require __DIR__.'/../app/autoload.php';
 include_once __DIR__.'/../var/bootstrap.php.cache';
 
-
-$kernel = new ApiKernel('prod', false);
+$appName = isset($_GET['app'])? $_GET['app'] : ApiKernel::APP_NAME;
+$kernel = KernelFactory::create($appName, 'prod', false);
 $kernel->loadClassCache();
 //$kernel = new AppCache($kernel);
 

@@ -22,7 +22,8 @@ if (isset($_SERVER['HTTP_CLIENT_IP'])
 $loader = require __DIR__.'/../app/autoload.php';
 Debug::enable();
 
-$kernel = new ApiKernel('dev', true);
+$appName = isset($_GET['app'])? $_GET['app'] : ApiKernel::APP_NAME;
+$kernel = KernelFactory::create($appName, 'dev', true);
 $kernel->loadClassCache();
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
