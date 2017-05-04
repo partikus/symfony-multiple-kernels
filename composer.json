@@ -8,7 +8,10 @@
         },
         "classmap": [
             "app/AppKernel.php",
-            "app/AppCache.php"
+            "app/AppCache.php",
+            "app/ApiKernel.php",
+            "app/AdminKernel.php",
+            "app/KernelFactory.php"
         ]
     },
     "autoload-dev": {

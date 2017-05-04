@@ -3,8 +3,14 @@
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
-class AppKernel extends Kernel
+abstract class AppKernel extends Kernel
 {
+    /**
+     * Returns unique app name
+     * @return string
+     */
+    abstract public function getAppName();
+
     public function registerBundles()
     {
         $bundles = [
