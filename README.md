@@ -5,7 +5,7 @@ Use [Symfony](http://symfony.com/doc/current/index.html) with multiple kernel ap
 
 ## Multiple Kernels
 
-Symfony [Multiple Kernels](http://symfony.com/doc/current/configuration/multiple_kernels.html) approach allows you create many independent Kernels. Thanks do that you can control list of enabled bundles as you wish.
+Symfony [Multiple Kernels](http://symfony.com/doc/current/configuration/multiple_kernels.html) approach allows you create many independent Kernels. Thanks to that you can: manage used bundles and separate configuration.
    
 ## Introduction
 
@@ -19,7 +19,7 @@ And just only for `admin` version you need to use `Twig`. To solve this issue we
 - [`ApiKernel`](app/ApiKernel.php)
 - [`AdminKernel`](app/AdminKernel.php)
 
-Those two classes extend from [`AppKernel`](app/AppKernel.php). Thanks to that per each kernel you could have two indepentent list of bundles.
+Those two classes extend from [`AppKernel`](app/AppKernel.php). Thanks to that per each kernel you could have two independent lists of bundles.
     
 ## Configs, Sessions, Caches & Logs
 
