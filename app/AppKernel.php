@@ -16,9 +16,7 @@ abstract class AppKernel extends Kernel
         $bundles = [
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
-            new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
-            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
@@ -61,6 +59,13 @@ abstract class AppKernel extends Kernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load($this->getRootDir() . '/config/' . $this->getAppName() . '/' . 'config_' . $this->getEnvironment() . '.yml');
+        $configurationPath = sprintf(
+            '%s/config/%s/config_%s.yml',
+            $this->getRootDir(),
+            $this->getAppName(),
+            $this->getEnvironment()
+        );
+
+        $loader->load($configurationPath);
     }
 }

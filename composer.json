@@ -1,6 +1,6 @@
 {
-    "name": "michalszczur/symfony-multiple-kernels",
-    "license": "proprietary",
+    "name": "partikus/symfony-multiple-kernels",
+    "license": "MIT",
     "type": "project",
     "autoload": {
         "psr-4": {

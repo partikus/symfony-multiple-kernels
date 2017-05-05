@@ -11,4 +11,13 @@ class AdminKernel extends AppKernel
     {
         return self::APP_NAME;
     }
+
+    public function registerBundles()
+    {
+        $bundles = parent::registerBundles();
+        $bundles[] = new Symfony\Bundle\TwigBundle\TwigBundle();
+        $bundles[] = new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle();
+
+        return $bundles;
+    }
 }
